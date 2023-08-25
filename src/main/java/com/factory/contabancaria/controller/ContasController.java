@@ -4,7 +4,7 @@ import com.factory.contabancaria.DTOs.CadastrarContaDTO;
 import com.factory.contabancaria.DTOs.ExibirContaPeloIdDTO;
 import com.factory.contabancaria.model.ContasModel;
 import com.factory.contabancaria.model.factory.ContaFactory;
-import com.factory.contabancaria.repository.ContasRepository;
+
 import com.factory.contabancaria.service.ContasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,9 +22,6 @@ public class ContasController {
 
     @Autowired
     ContasService contasService;
-
-    @Autowired
-    ContasRepository contasRepository;
 
     //requisições
     //GET - Pegar as informações do nosso banco

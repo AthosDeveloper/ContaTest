@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+
 @Entity
 @Table(name = "TB_CONTAS")
 @Getter
@@ -15,7 +16,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ContasModel {
-
+private static  Long uid1L;
     //Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
