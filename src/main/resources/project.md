@@ -44,9 +44,26 @@ mockMVC, performe e receba um MockMVCRequestBuilders.
 MockMVCRequestBuilders, delete no caminho "/api/contas/{id}", pegue o valor do id da conta1
 e espere que o status seja SemConteúdo.
 
+testeSeOStatusSerá200_quandoAtualizarConta
+
+
+
+conta1, sete o id que eu to pegando
+autere os valores dos outros
+
+
+
+mockito, quando você receber o contasService.update recebendo uma conta1 pegando um id, sendo atualizado pelo outro objetoConta1, então me retorne esse objeto atualizado.
+mockMvc, performe o método put recebendo o caminho "/api/contas/alterar/{id}", pegando o id da conta1
+O tipo de conteúdo recebe um Mediatipe.jsonApplication
+Conteúdo recebe um mapper.
+Mapper, escreve valores como string e recebe uma conta1 como parâmetro
+e espere que o status seja 200.
+e faça um print.
 
 
 
 */
+//essas lógicas podem ser aplicadas para outros contextos, além de poder esperar algo ao contrário 
 
 

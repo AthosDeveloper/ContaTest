@@ -103,5 +103,31 @@ public void meRetorneStatusIsCreated_quandoCadasTrarUmaNovaConta() throws Except
                 .andExpect(status()
                         .isNoContent());
 }
+@Test
+public void testeSeOStatusSerá200_quandoAtualizarConta() throws Exception{
+        c2.setId(2L);
+        c2.setNumConta("918");
+        c2.setAgencia("8888");
+        c2.setNomeDoUsuario("athos");
+        c2.setValorAtualConta(new BigDecimal("8652"));
+        c2.setValorFornecido(new BigDecimal("18.563"));
+c2.setTipoServico("polpanca");
+c2.setValorFinal(new BigDecimal("8165"));
+when(contasService.alterarContaPorId(c2.getId(), c2))
+        .thenReturn(c2);
+mockMvc.perform(put("/api/contas/alterar/{id}", c2.getId())
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(mapper.writeValueAsString(c2)))
+        .andExpect(status()
+                        .is(200))
+        .andDo(print());
+
+}
+
+
+
+
+
+
 }
 

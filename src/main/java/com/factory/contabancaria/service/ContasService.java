@@ -39,7 +39,7 @@ public class ContasService {
                 .calcular(contasModel.getValorAtualConta(), contasModel.getValorFornecido());
         BigDecimal valorAtualizado = contasModel.getValorAtualConta().add(resultado);
         contasModel.setValorAtualConta(valorAtualizado);
-
+contasModel.setValorFinal(BigDecimal.ZERO);
 
         return contasRepository.save(contasModel);
     }

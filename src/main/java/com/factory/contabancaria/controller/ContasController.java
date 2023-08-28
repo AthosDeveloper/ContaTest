@@ -59,9 +59,10 @@ if (conta.isPresent()){
     }
 
     //PUT - Alterar uma conta já existente dentro do banco
-    @PutMapping(path = "/{id}")
-    public ContasModel atualizarConta(@PathVariable Long id, @RequestBody ContasModel contasModel){
-        return contasService.alterarContaPorId(id, contasModel);
+    @PutMapping(path = "/alterar/{id}")
+    public ResponseEntity<ContasModel> AlterarContaPorId(@PathVariable Long id, @RequestBody ContasModel contasModel){
+         contasModel = contasService.alterarContaPorId(id, contasModel);
+   return ResponseEntity.status(200).body(contasModel);
     }
 //irei alterar a minha conta pelo nome:
 @PutMapping("/{nomeDeUsuario}")
