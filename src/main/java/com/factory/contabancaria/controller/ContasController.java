@@ -7,6 +7,7 @@ import com.factory.contabancaria.model.factory.ContaFactory;
 
 import com.factory.contabancaria.service.ContasService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,16 +31,14 @@ public class ContasController {
         return ResponseEntity.ok(contasService.listarContas());
     }
 //implementando o DTO com os respectivos atributos para get
-    @GetMapping(path = "/{id}")
+    @GetMapping("/getId/{id}")
     public ResponseEntity<?> exibeUmaContaPeloId(@PathVariable Long id) {
-        Optional<ContasModel> contaOpcional = contasService.exibeContaPorId(id);
-        if (contaOpcional.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conta não encontrada, tente novamente!");
-        }
-        return ResponseEntity.ok().body(new ExibirContaPeloIdDTO(contaOpcional.get()));
+        Optional<ContasModel> contasModel = contasService.exibeContaPorId(id);
+
+        return ResponseEntity.ok().body(new ExibirContaPeloIdDTO(contasModel.get()));
     }
     //Irei pegar uma conta pelo nome, usando um Optional para validar
-     @GetMapping(path = "/{nomeDeUsuario}")
+     @GetMapping("/getName/{nomeUsuario}")
     public ResponseEntity<?> exibirContasPorNome(@PathVariable String nomeDeUsuario){
 Optional<ContasModel> conta = contasService.exibirContasPorNome(nomeDeUsuario);
 if (conta.isPresent()){
@@ -50,6 +49,7 @@ if (conta.isPresent()){
     }
     //POST - Cria uma nova conta dentro do banco
 //crio um DTO com os respectivos atributos, criando um uri com o path da minha requisição e recebendo no body um novo DTO com uma nova conta como parâmetro.
+
     @PostMapping
 
     public ResponseEntity<CadastrarContaDTO> cadastrarConta(@RequestBody ContasModel contasModel, ContaFactory contaFactory){
