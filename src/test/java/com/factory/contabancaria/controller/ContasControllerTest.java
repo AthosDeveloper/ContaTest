@@ -21,6 +21,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Optional;
@@ -95,6 +97,11 @@ public void meRetorneStatusIsCreated_quandoCadasTrarUmaNovaConta() throws Except
         verify(contasService, times(1)).cadastrar(any(), eq(contaFactory))  ;
 
     }
-
+@Test
+    public void MeRetorneStatusNoContent_quandoDeletarUmaContaPorId() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/contas/{id}", c1.getId()))
+                .andExpect(status()
+                        .isNoContent());
+}
 }
 

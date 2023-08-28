@@ -77,8 +77,9 @@ public ContasModel alterarContaPorNome(@PathVariable String nomeDoUsuario, @Requ
     }
     //DELETE - Deleta uma conta já existente dentro do banco
     @DeleteMapping(path = "/{id}")
-    public void deletarConta(@PathVariable Long id){
+    public ResponseEntity<Void> deletarConta(@PathVariable Long id){
         contasService.deletarContaPorId(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
